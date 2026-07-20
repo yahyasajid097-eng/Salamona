@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Blossom | حقائب وإكسسوارات فاخرة</title>
+<meta name="description" content="Moon Blossom Ys — حقائب وإكسسوارات فاخرة. ازدهري تحت ضوء القمر.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="logo.png">
+<style>
+/* ===========================================================
+   نظام الألوان — كل هوية الموقع تُضبط من هنا
+   الأساس: أسود × ذهبي — مع لونين مساعدين فقط (نبيذي + زمردي)
+   =========================================================== */
+:root{
+  --bg:          #0a0806;
+  --bg-2:        #110c08;
+  --card:        #16100a;
+  --card-hi:     #1c140c;
+  --line:        rgba(201,162,77,.18);
+  --line-hi:     rgba(201,162,77,.4);
+
+  --gold:        #c9a24d;
+  --gold-light:  #ecd28f;
+  --gold-deep:   #8a6a2f;
+
+  --wine:        #7a2f3d;      /* لون مساعد ١ — تخفيضات / تنبيهات */
+  --wine-light:  #a8495a;
+  --emerald:     #2f4d40;      /* لون مساعد ٢ — ثقة / توفر */
+  --emerald-light:#4f7a67;
+
+  --ink:         #f6efdd;
+  --ink-dim:     #b6a888;
+  --ink-faint:   #7d735c;
+
+  --whatsapp:    #25d366;
+  --radius-lg:   20px;
+  --radius-md:   14px;
+  --radius-sm:   10px;
+  --maxw:        1240px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Cairo', sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Aref Ruqaa', serif; font-weight:700; color:var(--gold-light);}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+::selection{background:var(--gold); color:#000;}
+:focus-visible{outline:2px solid var(--gold-light); outline-offset:3px;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.only-mobile{display:none;}
+
+/* ---------- خلفية النجوم ---------- */
+#stars{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+.star{position:absolute; width:3px; height:3px; border-radius:50%; background:var(--gold-light); opacity:.15; animation:twinkle 4s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.08; transform:scale(1);} 50%{opacity:.85; transform:scale(1.6);}}
+
+/* ---------- شريط الإعلان ---------- */
+.announce{
+  background:var(--bg-2); border-bottom:1px solid var(--line);
+  text-align:center; font-size:.82rem; color:var(--gold-dim, var(--ink-dim));
+  padding:9px 16px; letter-spacing:.3px; position:relative; z-index:40;
+}
+.announce b{color:var(--gold-light);}
+
+/* ---------- الهيدر ---------- */
+header{position:sticky; top:0; z-index:50; background:rgba(10,8,6,.88); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:12px 24px; gap:18px;}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand img{width:42px; height:42px; border-radius:50%;}
+.brand span{font-family:'Aref Ruqaa', serif; font-size:1.2rem; color:var(--gold-light); letter-spacing:.4px;}
+.nav-links{display:flex; gap:28px; font-size:.94rem; color:var(--ink-dim); flex:1; justify-content:center;}
+.nav-links a{position:relative; padding:4px 0;}
+.nav-links a::after{content:''; position:absolute; bottom:-2px; right:0; width:0; height:1px; background:var(--gold); transition:width .25s ease;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-links a:hover::after{width:100%;}
+.nav-actions{display:flex; align-items:center; gap:6px;}
+.icon-btn{
+  position:relative; width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-dim); transition:background .2s ease, color .2s ease;
+}
+.icon-btn:hover{background:var(--card-hi); color:var(--gold-light);}
+.icon-btn svg{width:20px; height:20px;}
+.count-badge{
+  position:absolute; top:-2px; left:-2px;
+  background:var(--wine-light); color:#fff; font-size:.65rem; font-weight:700;
+  min-width:17px; height:17px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; padding:0 3px;
+}
+.nav-cta{
+  display:flex; align-items:center; gap:8px; background:var(--whatsapp); color:#06210f;
+  padding:9px 18px; border-radius:999px; font-weight:700; font-size:.88rem;
+  transition:transform .2s ease, box-shadow .2s ease; margin-inline-start:6px;
+}
+.nav-cta:hover{transform:translateY(-2px); box-shadow:0 8px 20px -6px rgba(37,211,102,.6);}
+.burger{display:none; width:40px; height:40px; align-items:center; justify-content:center; color:var(--gold-light);}
+
+/* قائمة الجوال */
+.mobile-menu{
+  position:fixed; inset:0 0 0 auto; width:82%; max-width:340px; z-index:90;
+  background:var(--bg-2); border-inline-start:1px solid var(--line);
+  transform:translateX(-102%); transition:transform .35s ease; padding:26px 24px;
+  display:flex; flex-direction:column; gap:22px;
+}
+[dir="rtl"] .mobile-menu{transform:translateX(102%);}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{font-size:1.05rem; color:var(--ink);}
+.menu-overlay{position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:85; opacity:0; pointer-events:none; transition:opacity .3s ease;}
+.menu-overlay.show{opacity:1; pointer-events:auto;}
+
+/* ---------- الهيرو ---------- */
+.hero{position:relative; z-index:1; min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:70px 24px 50px;}
+.hero-glow{position:absolute; top:6%; left:50%; transform:translateX(-50%); width:640px; max-width:90vw; height:640px; border-radius:50%; background:radial-gradient(circle, rgba(201,162,77,.12), transparent 70%); pointer-events:none;}
+.hero img.logo-main{width:190px; height:190px; border-radius:50%; margin-bottom:26px; animation:float 6s ease-in-out infinite; box-shadow:0 0 70px -12px rgba(201,162,77,.4); position:relative; z-index:1;}
+@keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);}}
+.eyebrow{color:var(--gold-deep); letter-spacing:3px; font-size:.78rem; text-transform:uppercase; margin-bottom:16px; position:relative; z-index:1;}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem); line-height:1.32; margin-bottom:14px; position:relative; z-index:1;}
+.hero p.sub{color:var(--ink-dim); max-width:540px; margin:0 auto 32px; font-size:1.03rem; position:relative; z-index:1;}
+.hero-ctas{display:flex; gap:16px; flex-wrap:wrap; justify-content:center; position:relative; z-index:1;}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:14px 30px; border-radius:999px; font-weight:700; font-size:.94rem; border:1px solid var(--line); transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
+.btn-gold{background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:#1a1206;}
+.btn-gold:hover{transform:translateY(-3px); box-shadow:0 10px 26px -8px rgba(201,162,77,.55);}
+.btn-ghost{color:var(--ink);}
+.btn-ghost:hover{border-color:var(--gold); color:var(--gold-light);}
+.divider{display:flex; align-items:center; gap:14px; color:var(--gold-deep); margin:0 auto 18px; width:fit-content; font-size:.85rem;}
+.divider::before,.divider::after{content:''; width:46px; height:1px; background:var(--gold-deep);}
+
+/* ---------- شريط الثقة ---------- */
+.trust{position:relative; z-index:1; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2);}
+.trust .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:30px 24px;}
+.trust-item{display:flex; align-items:center; gap:12px; font-size:.85rem;}
+.trust-item svg{width:26px; height:26px; flex-shrink:0; color:var(--gold);}
+.trust-item b{display:block; color:var(--ink); font-size:.9rem;}
+.trust-item span{color:var(--ink-faint); font-size:.78rem;}
+
+/* ---------- القصة ---------- */
+.story{position:relative; z-index:1; padding:80px 24px; text-align:center;}
+.story .wrap{max-width:640px;}
+.story h2{font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:18px;}
+.story p{color:var(--ink-dim); font-size:1.02rem;}
+
+/* ---------- المنتجات ---------- */
+.products{position:relative; z-index:1; padding:20px 24px 100px;}
+.section-head{text-align:center; margin-bottom:38px;}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.3rem); margin-bottom:8px;}
+.section-head p{color:var(--ink-dim);}
+
+.filters{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;}
+.filter-chip{
+  padding:9px 20px; border-radius:999px; border:1px solid var(--line); color:var(--ink-dim); font-size:.85rem;
+  transition:all .25s ease;
+}
+.filter-chip:hover{border-color:var(--gold); color:var(--gold-light);}
+.filter-chip.active{background:var(--gold); color:#1a1206; border-color:var(--gold); font-weight:700;}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(255px, 1fr)); gap:26px;}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden;
+  opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.card.show{opacity:1; transform:translateY(0);}
+.card:hover{border-color:var(--gold); box-shadow:0 18px 40px -18px rgba(0,0,0,.7);}
+.card-media{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 30%, #1e160c 0%, #0d0a06 75%); position:relative; overflow:hidden;}
+.card-media img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.card:hover .card-media img{transform:scale(1.06);}
+.card-media svg.bag-ph{width:36%; height:36%; opacity:.5;}
+.badges-row{position:absolute; top:12px; inset-inline-start:12px; display:flex; flex-direction:column; gap:6px; z-index:2;}
+.badge{font-size:.7rem; padding:4px 11px; border-radius:999px; border:1px solid; backdrop-filter:blur(4px);}
+.badge.new{background:rgba(201,162,77,.16); border-color:var(--gold-deep); color:var(--gold-light);}
+.badge.sale{background:rgba(122,47,61,.35); border-color:var(--wine-light); color:#f2c9d0;}
+.wish-btn{
+  position:absolute; top:12px; inset-inline-end:12px; z-index:2; width:34px; height:34px; border-radius:50%;
+  background:rgba(10,8,6,.55); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center;
+  transition:background .2s ease;
+}
+.wish-btn svg{width:16px; height:16px; stroke:var(--ink); fill:none; transition:fill .2s ease, stroke .2s ease;}
+.wish-btn.active svg{fill:var(--wine-light); stroke:var(--wine-light);}
+.quick-view{
+  position:absolute; bottom:-46px; inset-inline-start:0; inset-inline-end:0; text-align:center; padding:10px;
+  background:rgba(10,8,6,.82); color:var(--gold-light); font-size:.82rem; font-weight:700;
+  transition:bottom .3s ease;
+}
+.card:hover .quick-view{bottom:0;}
+.card-body{padding:18px 18px 20px;}
+.stars-row{display:flex; align-items:center; gap:6px; margin-bottom:8px;}
+.stars-row svg{width:13px; height:13px; fill:var(--gold);}
+.stars-row span{color:var(--ink-faint); font-size:.75rem;}
+.card-body h3{font-size:1.1rem; margin-bottom:6px; color:var(--ink); font-weight:600; font-family:'Cairo',sans-serif;}
+.card-body .desc{color:var(--ink-dim); font-size:.85rem; margin-bottom:14px; min-height:38px;}
+.card-foot{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+.price-row{display:flex; align-items:baseline; gap:8px;}
+.price{color:var(--gold-light); font-weight:700; font-size:1.12rem; font-family:'Aref Ruqaa', serif;}
+.old-price{color:var(--ink-faint); font-size:.82rem; text-decoration:line-through;}
+.order-btn{display:flex; align-items:center; gap:6px; background:var(--whatsapp); color:#06210f; padding:9px 15px; border-radius:999px; font-size:.8rem; font-weight:700; transition:transform .2s ease;}
+.order-btn:hover{transform:translateY(-2px);}
+.add-cart-btn{display:flex; align-items:center; gap:6px; background:var(--card-hi); border:1px solid var(--line); color:var(--gold-light); padding:9px 12px; border-radius:999px; font-size:.8rem; font-weight:700; transition:border-color .2s ease;}
+.add-cart-btn:hover{border-color:var(--gold);}
+.card-actions{display:flex; gap:8px; margin-top:10px;}
+
+/* ---------- بانر ترويجي ---------- */
+.promo{position:relative; z-index:1; padding:0 24px 100px;}
+.promo-inner{
+  max-width:var(--maxw); margin:0 auto; border-radius:var(--radius-lg); overflow:hidden; position:relative;
+  background:linear-gradient(120deg, var(--emerald) 0%, #16100a 55%); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; padding:46px 44px; gap:24px; flex-wrap:wrap;
+}
+.promo-text h3{font-size:clamp(1.4rem,2.6vw,1.9rem); margin-bottom:10px; color:var(--gold-light);}
+.promo-text p{color:var(--ink-dim); max-width:420px; font-size:.95rem;}
+.promo .btn-gold{margin-top:20px;}
+
+/* ---------- الآراء ---------- */
+.reviews{position:relative; z-index:1; padding:0 0 100px;}
+.reviews-track{display:flex; gap:20px; overflow-x:auto; padding:6px 24px 20px; scroll-snap-type:x mandatory; scrollbar-width:thin;}
+.reviews-track::-webkit-scrollbar{height:5px;}
+.reviews-track::-webkit-scrollbar-thumb{background:var(--gold-deep); border-radius:99px;}
+.review-card{
+  scroll-snap-align:start; flex:0 0 300px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:24px; display:flex; flex-direction:column; gap:12px;
+}
+.review-card .stars-row svg{width:14px; height:14px;}
+.review-card p{color:var(--ink-dim); font-size:.9rem; flex:1;}
+.reviewer{display:flex; align-items:center; gap:10px;}
+.avatar{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-deep)); display:flex; align-items:center; justify-content:center; color:#1a1206; font-weight:800; font-family:'Aref Ruqaa',serif;}
+.reviewer b{font-size:.86rem; color:var(--ink);}
+.reviewer span{font-size:.72rem; color:var(--ink-faint);}
+
+/* ---------- الأسئلة الشائعة ---------- */
+.faq{position:relative; z-index:1; padding:0 24px 100px;}
+.faq .wrap{max-width:760px;}
+.faq-item{border-bottom:1px solid var(--line); padding:18px 0;}
+.faq-q{display:flex; align-items:center; justify-content:space-between; gap:16px; font-weight:600; color:var(--ink); font-size:1rem;}
+.faq-q svg{width:16px; height:16px; flex-shrink:0; transition:transform .3s ease; color:var(--gold);}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+.faq-a p{color:var(--ink-dim); font-size:.9rem; padding-top:12px; max-width:640px;}
+
+/* ---------- النشرة البريدية ---------- */
+.newsletter{position:relative; z-index:1; padding:70px 24px; background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center;}
+.newsletter h2{font-size:clamp(1.5rem,2.8vw,2rem); margin-bottom:10px;}
+.newsletter p{color:var(--ink-dim); margin-bottom:26px;}
+.news-form{display:flex; gap:10px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center;}
+.news-form input{
+  flex:1; min-width:220px; padding:13px 18px; border-radius:999px; border:1px solid var(--line); background:var(--card);
+  color:var(--ink); font-family:inherit; font-size:.9rem;
+}
+.news-form input:focus{border-color:var(--gold);}
+.news-form button{padding:13px 26px; border-radius:999px; background:var(--gold); color:#1a1206; font-weight:700; font-size:.9rem; white-space:nowrap;}
+
+/* ---------- تذييل ---------- */
+footer{position:relative; z-index:1; padding:60px 24px 26px;}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:32px; margin-bottom:40px;}
+.foot-brand{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+.foot-brand img{width:38px; height:38px; border-radius:50%;}
+.foot-brand span{font-family:'Aref Ruqaa',serif; color:var(--gold-light); font-size:1.1rem;}
+.foot-col p{color:var(--ink-dim); font-size:.86rem; max-width:260px;}
+.foot-col h4{color:var(--ink); font-size:.92rem; margin-bottom:14px; font-family:'Cairo',sans-serif; font-weight:700;}
+.foot-col ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+.foot-col ul a{color:var(--ink-dim); font-size:.86rem; transition:color .2s ease;}
+.foot-col ul a:hover{color:var(--gold-light);}
+.social-row{display:flex; gap:12px; margin-top:16px;}
+.social-row a{width:38px; height:38px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; transition:border-color .2s ease, transform .2s ease;}
+.social-row a:hover{border-color:var(--gold); transform:translateY(-3px);}
+.foot-bottom{border-top:1px solid var(--line); padding-top:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+.fine{color:var(--gold-deep); font-size:.78rem;}
+.pay-icons{display:flex; gap:8px; color:var(--ink-faint); font-size:.75rem;}
+.pay-icons span{border:1px solid var(--line); padding:4px 10px; border-radius:6px;}
+
+/* ---------- زر واتساب العائم ---------- */
+.float-wa{position:fixed; bottom:22px; inset-inline-end:22px; z-index:60; width:58px; height:58px; border-radius:50%; background:var(--whatsapp); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px -6px rgba(37,211,102,.65); animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 10px 30px -6px rgba(37,211,102,.65);} 50%{box-shadow:0 10px 30px -2px rgba(37,211,102,.95);}}
+
+/* ---------- سلة التسوق (درج جانبي) ---------- */
+.overlay{position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:95; opacity:0; pointer-events:none; transition:opacity .3s ease;}
+.overlay.show{opacity:1; pointer-events:auto;}
+.cart-drawer{
+  position:fixed; top:0; bottom:0; inset-inline-end:0; width:92%; max-width:400px; z-index:96;
+  background:var(--bg-2); border-inline-start:1px solid var(--line); transform:translateX(102%);
+  transition:transform .35s ease; display:flex; flex-direction:column;
+}
+[dir="rtl"] .cart-drawer{transform:translateX(-102%);}
+.cart-drawer.open{transform:translateX(0);}
+.cart-head{display:flex; align-items:center; justify-content:space-between; padding:22px 22px 18px; border-bottom:1px solid var(--line);}
+.cart-head h3{font-size:1.15rem;}
+.cart-close{width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink-dim);}
+.cart-close:hover{background:var(--card-hi); color:var(--gold-light);}
+.cart-items{flex:1; overflow-y:auto; padding:16px 22px;}
+.cart-empty{color:var(--ink-faint); text-align:center; padding:60px 20px; font-size:.9rem;}
+.cart-item{display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--line);}
+.cart-item-media{width:60px; height:60px; border-radius:var(--radius-sm); background:radial-gradient(circle at 50% 30%, #1e160c 0%, #0d0a06 75%); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden;}
+.cart-item-media img{width:100%; height:100%; object-fit:cover;}
+.cart-item-media svg{width:55%; height:55%; opacity:.5;}
+.cart-item-info{flex:1; min-width:0;}
+.cart-item-info b{font-size:.88rem; display:block; margin-bottom:4px;}
+.cart-item-info .price{font-size:.85rem;}
+.qty-row{display:flex; align-items:center; gap:10px; margin-top:8px;}
+.qty-btn{width:24px; height:24px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:.9rem;}
+.qty-btn:hover{border-color:var(--gold);}
+.remove-item{color:var(--wine-light); font-size:.78rem; margin-inline-start:auto;}
+.cart-foot{padding:20px 22px 26px; border-top:1px solid var(--line);}
+.cart-total-row{display:flex; justify-content:space-between; margin-bottom:16px; font-size:1rem;}
+.cart-total-row b{color:var(--gold-light); font-family:'Aref Ruqaa',serif; font-size:1.2rem;}
+.checkout-btn{width:100%; padding:14px; border-radius:999px; background:var(--whatsapp); color:#06210f; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px;}
+.checkout-btn:hover{transform:translateY(-2px);}
+
+/* ---------- نافذة العرض السريع ---------- */
+.qv-overlay{position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:97; opacity:0; pointer-events:none; transition:opacity .3s ease; display:flex; align-items:center; justify-content:center; padding:20px;}
+.qv-overlay.show{opacity:1; pointer-events:auto;}
+.qv-modal{
+  background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius-lg); max-width:760px; width:100%;
+  display:grid; grid-template-columns:1fr 1fr; overflow:hidden; transform:scale(.95); transition:transform .3s ease; max-height:85vh;
+}
+.qv-overlay.show .qv-modal{transform:scale(1);}
+.qv-media{background:radial-gradient(circle at 50% 30%, #1e160c 0%, #0d0a06 75%); display:flex; align-items:center; justify-content:center; padding:30px; position:relative;}
+.qv-media img{width:100%; border-radius:var(--radius-md);}
+.qv-media svg{width:45%; height:45%; opacity:.5;}
+.qv-close{position:absolute; top:14px; inset-inline-end:14px; width:34px; height:34px; border-radius:50%; background:rgba(10,8,6,.6); display:flex; align-items:center; justify-content:center; z-index:2;}
+.qv-body{padding:30px; overflow-y:auto;}
+.qv-body h3{font-size:1.35rem; margin-bottom:10px;}
+.qv-body .desc{color:var(--ink-dim); font-size:.92rem; margin-bottom:18px;}
+.qv-body .price-row{margin-bottom:20px;}
+.qv-body .price{font-size:1.4rem;}
+.qv-actions{display:flex; flex-direction:column; gap:10px;}
+.qv-actions .btn{justify-content:center;}
+
+@media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
+
+@media (max-width: 900px){
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .trust .wrap{grid-template-columns:repeat(2,1fr);}
+  .qv-modal{grid-template-columns:1fr;}
+}
+@media (max-width: 720px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .only-mobile{display:block;}
+}
+@media (max-width: 520px){
+  .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+<div class="overlay" id="cartOverlay"></div>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="announce">✦ شحن مجاني للطلبات فوق <b>300 ر.س</b> — عرض هذا الأسبوع فقط ✦</div>
+
+<header>
+  <nav class="nav wrap">
+    <button class="burger" id="burgerBtn" aria-label="القائمة">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="brand">
+      <img src="logo.png" alt="Moon Blossom">
+      <span>Moon Blossom</span>
+    </div>
+    <div class="nav-links">
+      <a href="#products">المنتجات</a>
+      <a href="#story">قصتنا</a>
+      <a href="#reviews">آراء العملاء</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+      <a href="#contact">تواصلي معنا</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishNavBtn" aria-label="المفضلة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9.2C.5 8.2 2.3 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.7.5 5.5 4.2 4 7.8-2.5 4.6-10 9.2-10 9.2Z"/></svg>
+      </button>
+      <button class="icon-btn" id="cartBtn" aria-label="سلة المشتريات">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+        <span class="count-badge" id="cartCount">0</span>
+      </button>
+      <a class="nav-cta" id="navWa" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#06210f"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Z"/></svg>
+        واتساب
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products">المنتجات</a>
+  <a href="#story">قصتنا</a>
+  <a href="#reviews">آراء العملاء</a>
+  <a href="#faq">الأسئلة الشائعة</a>
+  <a href="#contact">تواصلي معنا</a>
+</div>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="eyebrow">Bags &amp; Accessories</div>
+  <img class="logo-main" src="logo.png" alt="شعار Moon Blossom">
+  <h1>ازدهري تحت ضوء القمر</h1>
+  <p class="sub">حقائب وإكسسوارات مختارة بعناية، تجمع بين الأناقة الهادئة ولمسة ذهبية مميزة. كل قطعة صُممت لترافقك أينما أزهرتِ.</p>
+  <div class="hero-ctas">
+    <a href="#products" class="btn btn-gold">تصفّحي المجموعة</a>
+    <a class="btn btn-ghost" id="heroWa" target="_blank" rel="noopener">اطلبي عبر واتساب</a>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
+      <div><b>شحن سريع</b><span>لجميع مناطق المملكة</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/></svg>
+      <div><b>دفع آمن</b><span>عبر واتساب مباشرة</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v13H7l-3 3z"/></svg>
+      <div><b>دعم متواصل</b><span>نجيبك خلال دقائق</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-6-8.5"/><path d="M21 4v6h-6"/></svg>
+      <div><b>استبدال سهل</b><span>خلال 7 أيام</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="divider">✦</div>
+    <h2>قصة Moon Blossom</h2>
+    <p>وُلدت Moon Blossom من فكرة بسيطة: أن الأناقة الحقيقية تشبه القمر — هادئة، ثابتة، ولا تحتاج إلى صخب لتُلفت الأنظار. كل حقيبة وإكسسوار في مجموعتنا يُختار بعناية ليعكس هذا التوازن بين البساطة والفخامة.</p>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">✦</div>
+      <h2>المجموعة</h2>
+      <p>تصفّحي حسب الفئة، أو أضيفي للسلة واطلبي دفعة واحدة عبر واتساب</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="promo">
+  <div class="promo-inner">
+    <div class="promo-text">
+      <h3>مجموعة السهرات الجديدة</h3>
+      <p>قطع مختارة لمناسباتك الخاصة، بتفاصيل ذهبية دقيقة وخامات فاخرة تدوم.</p>
+      <a href="#products" class="btn btn-gold">اكتشفي المجموعة</a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap section-head">
+    <div class="divider">✦</div>
+    <h2>ماذا تقول عميلاتنا</h2>
+  </div>
+  <div class="reviews-track" id="reviewsTrack"></div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">✦</div>
+      <h2>الأسئلة الشائعة</h2>
+    </div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap">
+    <h2>ابقي على اطّلاع</h2>
+    <p>اشتركي لتصلك أحدث المجموعات والعروض الحصرية أولاً بأول</p>
+    <form class="news-form" id="newsForm">
+      <input type="email" placeholder="بريدك الإلكتروني" required>
+      <button type="submit">اشتراك</button>
+    </form>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <img src="logo.png" alt="Moon Blossom">
+          <span>Moon Blossom</span>
+        </div>
+        <p>Bags &amp; Accessories — Bloom under the moon. حقائب وإكسسوارات تعكس أناقة هادئة ولمسة ذهبية مميزة.</p>
+        <div class="social-row">
+          <a id="footWa" target="_blank" rel="noopener" aria-label="واتساب"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Z"/></svg></a>
+          <a href="#" aria-label="انستغرام"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="تيك توك"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.6"><path d="M14 3v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.5 2.3 4.3 5 4.6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>تسوّقي</h4>
+        <ul>
+          <li><a href="#products">جميع المنتجات</a></li>
+          <li><a href="#products">حقائب اليد</a></li>
+          <li><a href="#products">الإكسسوارات</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>روابط</h4>
+        <ul>
+          <li><a href="#story">قصتنا</a></li>
+          <li><a href="#reviews">آراء العملاء</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>تواصلي معنا</h4>
+        <p>متاحون على واتساب لأي استفسار حول المنتجات أو الطلبات.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="fine">© 2026 Moon Blossom Ys — جميع الحقوق محفوظة</span>
+      <div class="pay-icons"><span>Visa</span><span>Mada</span><span>Apple Pay</span></div>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" id="floatWa" target="_blank" rel="noopener" aria-label="اطلبي عبر واتساب">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#06210f"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Z"/></svg>
+</a>
+
+<!-- درج سلة التسوق -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>سلة التسوق</h3>
+    <button class="cart-close" id="cartCloseBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>الإجمالي</span><b id="cartTotal">0 ر.س</b></div>
+    <button class="checkout-btn" id="checkoutBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#06210f"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Z"/></svg>
+      إتمام الطلب عبر واتساب
+    </button>
+  </div>
+</div>
+
+<!-- نافذة العرض السريع -->
+<div class="qv-overlay" id="qvOverlay">
+  <div class="qv-modal">
+    <div class="qv-media" id="qvMedia">
+      <button class="qv-close" id="qvCloseBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6efdd" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="qv-body">
+      <h3 id="qvName"></h3>
+      <div class="stars-row" id="qvStars"></div>
+      <p class="desc" id="qvDesc"></p>
+      <div class="price-row"><span class="price" id="qvPrice"></span><span class="old-price" id="qvOldPrice"></span></div>
+      <div class="qv-actions">
+        <button class="btn btn-gold" id="qvAddCart">أضيفي إلى السلة</button>
+        <a class="btn btn-ghost" id="qvWa" target="_blank" rel="noopener" style="border-color:var(--line);">اطلبي مباشرة عبر واتساب</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===========================================================
+   الإعدادات — عدّلي رقم الواتساب هنا (صيغة دولية، بدون + أو صفر)
+   مثال: رقم سعودي 05xxxxxxxx يصبح 9665xxxxxxxx
+   =========================================================== */
+const WHATSAPP_NUMBER = "9665XXXXXXXX"; // ⚠️ غيّري هذا الرقم إلى رقمك
+
+/* ===========================================================
+   المنتجات — انسخي أحد الأسطر وعدّلي بياناته لإضافة منتج جديد
+   category: bags / wallets / accessories / backpacks
+   image: رابط صورة مباشر (ارفعي الصورة على imgur.com) — اتركيها "" لعرض أيقونة حقيبة
+   =========================================================== */
+const PRODUCTS = [
+  { name:"حقيبة Aurora الذهبية", price:320, oldPrice:null, category:"bags", desc:"حقيبة يد جلدية بلمسة ذهبية، مثالية للمناسبات المسائية.", image:"", badge:"new", rating:5, reviews:24 },
+  { name:"حقيبة Lumière الصغيرة", price:245, oldPrice:290, category:"bags", desc:"حقيبة كتف صغيرة أنيقة، تناسب الإطلالات اليومية.", image:"", badge:"sale", rating:4, reviews:18 },
+  { name:"محفظة Celeste", price:140, oldPrice:null, category:"wallets", desc:"محفظة جلدية أنيقة بتفاصيل ذهبية دقيقة.", image:"", badge:"", rating:5, reviews:31 },
+  { name:"حقيبة يد Nocturne", price:410, oldPrice:null, category:"bags", desc:"قطعة مميزة للسهرات، بتصميم فاخر وخامة راقية.", image:"", badge:"new", rating:5, reviews:12 },
+  { name:"طقم إكسسوارات Blossom", price:180, oldPrice:220, category:"accessories", desc:"طقم إكسسوارات متكامل بلمسات ذهبية ناعمة.", image:"", badge:"sale", rating:4, reviews:9 },
+  { name:"حقيبة ظهر Selene", price:295, oldPrice:null, category:"backpacks", desc:"عملية وأنيقة، مثالية للاستخدام اليومي والسفر.", image:"", badge:"", rating:4, reviews:15 },
+  { name:"محفظة Ivory الصغيرة", price:120, oldPrice:null, category:"wallets", desc:"محفظة أنيقة بحجم مناسب لجميع الاحتياجات اليومية.", image:"", badge:"", rating:5, reviews:20 },
+  { name:"إكسسوار Halo للشعر", price:95, oldPrice:null, category:"accessories", desc:"لمسة ذهبية أنيقة تكمل إطلالتك في أي مناسبة.", image:"", badge:"new", rating:5, reviews:7 }
+];
+
+const CATEGORIES = [
+  { key:"all", label:"الكل" },
+  { key:"bags", label:"حقائب اليد" },
+  { key:"wallets", label:"المحافظ" },
+  { key:"backpacks", label:"حقائب الظهر" },
+  { key:"accessories", label:"إكسسوارات" }
+];
+
+const REVIEWS = [
+  { name:"سارة", initial:"س", rating:5, text:"جودة رائعة وتغليف أنيق جداً، الحقيبة أجمل من الصور بكثير." },
+  { name:"نورة", initial:"ن", rating:5, text:"تجاوبهم عبر واتساب سريع، ووصل الطلب أسرع مما توقعت." },
+  { name:"ريم", initial:"ر", rating:4, text:"الخامة ممتازة والألوان مطابقة تماماً للوصف." },
+  { name:"لمى", initial:"ل", rating:5, text:"من أفضل تجارب التسوق، سأطلب مرة أخرى بالتأكيد." }
+];
+
+const FAQS = [
+  { q:"كم تستغرق مدة الشحن؟", a:"عادة يصل طلبك خلال 2 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة للمناطق البعيدة." },
+  { q:"كيف أتم عملية الطلب؟", a:"أضيفي المنتجات إلى السلة ثم اضغطي «إتمام الطلب عبر واتساب»، وسيصلنا طلبك مباشرة لتأكيده والدفع." },
+  { q:"هل يمكن استبدال المنتج؟", a:"نعم، يمكنك استبدال أي منتج خلال 7 أيام من الاستلام بشرط أن يكون بحالته الأصلية." },
+  { q:"هل تشحنون خارج المملكة؟", a:"حالياً نقتصر على الشحن داخل المملكة، وسنعلن قريباً عن خيارات الشحن الدولي." }
+];
+
+/* ===================== أدوات مساعدة ===================== */
+const bagIcon = `<svg class="bag-ph" viewBox="0 0 64 64" fill="none" stroke="#c9a24d" stroke-width="1.6"><path d="M18 24h28l2 30a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4l2-30Z"/><path d="M24 24v-6a8 8 0 0 1 16 0v6"/><path d="M24 32c0 4 4 6 8 6s8-2 8-6" opacity=".6"/></svg>`;
+const starIcon = `<svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.4 7.7l6-.7L10 1.5Z"/></svg>`;
+function starsHtml(rating){ let h=''; for(let i=0;i<5;i++){ h += `<span style="opacity:${i<rating?1:.25}">${starIcon}</span>`; } return h; }
+function fmt(n){ return n.toLocaleString('ar-SA') + ' ر.س'; }
+function waLink(text){ return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`; }
+
+const generalWaMsg = 'مرحباً Moon Blossom ✨ أرغب بالاستفسار عن منتجاتكم';
+["navWa","heroWa","footWa","floatWa"].forEach(id => { const el=document.getElementById(id); if(el) el.href = waLink(generalWaMsg); });
+
+/* ===================== الفلاتر والمنتجات ===================== */
+const filtersEl = document.getElementById('filters');
+const grid = document.getElementById('productGrid');
+let activeCat = 'all';
+const wishlist = new Set();
+
+CATEGORIES.forEach(c => {
+  const chip = document.createElement('button');
+  chip.className = 'filter-chip' + (c.key==='all' ? ' active' : '');
+  chip.textContent = c.label;
+  chip.dataset.cat = c.key;
+  chip.addEventListener('click', () => {
+    activeCat = c.key;
+    document.querySelectorAll('.filter-chip').forEach(el=>el.classList.remove('active'));
+    chip.classList.add('active');
+    renderProducts();
+  });
+  filtersEl.appendChild(chip);
+});
+
+function renderProducts(){
+  grid.innerHTML = '';
+  const list = PRODUCTS.filter(p => activeCat==='all' || p.category===activeCat);
+  list.forEach((p, i) => {
+    const idx = PRODUCTS.indexOf(p);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-media">
+        <div class="badges-row">
+          ${p.badge==='new' ? '<span class="badge new">جديد</span>' : ''}
+          ${p.badge==='sale' ? '<span class="badge sale">تخفيض</span>' : ''}
+        </div>
+        <button class="wish-btn" data-idx="${idx}" aria-label="أضيفي للمفضلة">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.2C.5 8.2 2.3 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.7.5 5.5 4.2 4 7.8-2.5 4.6-10 9.2-10 9.2Z"/></svg>
+        </button>
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : bagIcon}
+        <button class="quick-view" data-idx="${idx}">عرض سريع</button>
+      </div>
+      <div class="card-body">
+        <div class="stars-row">${starsHtml(p.rating)}<span>(${p.reviews})</span></div>
+        <h3>${p.name}</h3>
+        <p class="desc">${p.desc}</p>
+        <div class="card-foot">
+          <div class="price-row">
+            <span class="price">${fmt(p.price)}</span>
+            ${p.oldPrice ? `<span class="old-price">${fmt(p.oldPrice)}</span>` : ''}
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="add-cart-btn" data-idx="${idx}">+ سلة</button>
+          <a class="order-btn" href="${waLink('مرحباً Moon Blossom ✨\\nأرغب بطلب: '+p.name+' ('+fmt(p.price)+')')}" target="_blank" rel="noopener">اطلبي الآن</a>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.querySelectorAll('.card').forEach(c => io.observe(c));
+  bindProductButtons();
+}
+
+function bindProductButtons(){
+  document.querySelectorAll('.wish-btn').forEach(btn => {
+    btn.onclick = () => {
+      const idx = btn.dataset.idx;
+      if(wishlist.has(idx)){ wishlist.delete(idx); btn.classList.remove('active'); }
+      else { wishlist.add(idx); btn.classList.add('active'); }
+    };
+  });
+  document.querySelectorAll('.add-cart-btn').forEach(btn => {
+    btn.onclick = () => addToCart(parseInt(btn.dataset.idx));
+  });
+  document.querySelectorAll('.quick-view').forEach(btn => {
+    btn.onclick = () => openQuickView(parseInt(btn.dataset.idx));
+  });
+}
+
+/* ===================== سلة التسوق ===================== */
+let cart = []; // { idx, qty }
+const cartDrawer = document.getElementById('cartDrawer');
+const cartOverlay = document.getElementById('cartOverlay');
+const cartItemsEl = document.getElementById('cartItems');
+const cartCountEl = document.getElementById('cartCount');
+const cartTotalEl = document.getElementById('cartTotal');
+
+function addToCart(idx){
+  const existing = cart.find(c => c.idx===idx);
+  if(existing) existing.qty++;
+  else cart.push({idx, qty:1});
+  renderCart();
+  openCart();
+}
+function changeQty(idx, delta){
+  const item = cart.find(c => c.idx===idx);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) cart = cart.filter(c => c.idx!==idx);
+  renderCart();
+}
+function renderCart(){
+  cartCountEl.textContent = cart.reduce((s,c)=>s+c.qty,0);
+  if(cart.length===0){
+    cartItemsEl.innerHTML = '<div class="cart-empty">سلتك فارغة حالياً<br>أضيفي منتجاً لتبدئي التسوق ✦</div>';
+    cartTotalEl.textContent = fmt(0);
+    return;
+  }
+  let total = 0;
+  cartItemsEl.innerHTML = cart.map(c => {
+    const p = PRODUCTS[c.idx];
+    total += p.price * c.qty;
+    return `
+      <div class="cart-item">
+        <div class="cart-item-media">${p.image ? `<img src="${p.image}" alt="${p.name}">` : bagIcon}</div>
+        <div class="cart-item-info">
+          <b>${p.name}</b>
+          <span class="price">${fmt(p.price)}</span>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty(${c.idx},-1)">−</button>
+            <span>${c.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${c.idx},1)">+</button>
+            <button class="remove-item" onclick="changeQty(${c.idx},-999)">إزالة</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  cartTotalEl.textContent = fmt(total);
+}
+function openCart(){ cartDrawer.classList.add('open'); cartOverlay.classList.add('show'); }
+function closeCart(){ cartDrawer.classList.remove('open'); cartOverlay.classList.remove('show'); }
+document.getElementById('cartBtn').onclick = openCart;
+document.getElementById('cartCloseBtn').onclick = closeCart;
+cartOverlay.onclick = () => { closeCart(); closeMenu(); };
+
+document.getElementById('checkoutBtn').onclick = () => {
+  if(cart.length===0) return;
+  let msg = 'مرحباً Moon Blossom ✨\nأرغب بإتمام الطلب التالي:\n';
+  let total = 0;
+  cart.forEach(c => {
+    const p = PRODUCTS[c.idx];
+    total += p.price * c.qty;
+    msg += `- ${p.name} × ${c.qty} = ${fmt(p.price*c.qty)}\n`;
+  });
+  msg += `\nالإجمالي: ${fmt(total)}`;
+  window.open(waLink(msg), '_blank');
+};
+
+/* ===================== العرض السريع ===================== */
+const qvOverlay = document.getElementById('qvOverlay');
+function openQuickView(idx){
+  const p = PRODUCTS[idx];
+  document.getElementById('qvMedia').innerHTML = `<button class="qv-close" id="qvCloseBtn2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6efdd" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg></button>` + (p.image ? `<img src="${p.image}" alt="${p.name}">` : bagIcon);
+  document.getElementById('qvName').textContent = p.name;
+  document.getElementById('qvStars').innerHTML = starsHtml(p.rating) + `<span>(${p.reviews} تقييم)</span>`;
+  document.getElementById('qvDesc').textContent = p.desc;
+  document.getElementById('qvPrice').textContent = fmt(p.price);
+  document.getElementById('qvOldPrice').textContent = p.oldPrice ? fmt(p.oldPrice) : '';
+  document.getElementById('qvAddCart').onclick = () => { addToCart(idx); closeQuickView(); };
+  document.getElementById('qvWa').href = waLink('مرحباً Moon Blossom ✨\nأرغب بطلب: '+p.name+' ('+fmt(p.price)+')');
+  document.getElementById('qvCloseBtn2').onclick = closeQuickView;
+  qvOverlay.classList.add('show');
+}
+function closeQuickView(){ qvOverlay.classList.remove('show'); }
+document.getElementById('qvCloseBtn').onclick = closeQuickView;
+qvOverlay.addEventListener('click', e => { if(e.target===qvOverlay) closeQuickView(); });
+
+/* ===================== القائمة الجانبية للجوال ===================== */
+const mobileMenu = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+function openMenu(){ mobileMenu.classList.add('open'); menuOverlay.classList.add('show'); }
+function closeMenu(){ mobileMenu.classList.remove('open'); menuOverlay.classList.remove('show'); }
+document.getElementById('burgerBtn').onclick = openMenu;
+menuOverlay.onclick = closeMenu;
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+/* ===================== الآراء ===================== */
+const reviewsTrack = document.getElementById('reviewsTrack');
+REVIEWS.forEach(r => {
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.innerHTML = `
+    <div class="stars-row">${starsHtml(r.rating)}</div>
+    <p>"${r.text}"</p>
+    <div class="reviewer">
+      <div class="avatar">${r.initial}</div>
+      <div><b>${r.name}</b><br><span>عميلة موثقة</span></div>
+    </div>`;
+  reviewsTrack.appendChild(card);
+});
+
+/* ===================== الأسئلة الشائعة ===================== */
+const faqList = document.getElementById('faqList');
+FAQS.forEach(f => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <div class="faq-q">${f.q}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="faq-a"><p>${f.a}</p></div>`;
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-a').style.maxHeight = null; });
+    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+  faqList.appendChild(item);
+});
+
+/* ===================== النشرة البريدية ===================== */
+document.getElementById('newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  e.target.querySelector('input').value = '';
+  const btn = e.target.querySelector('button');
+  const original = btn.textContent;
+  btn.textContent = 'تم الاشتراك ✓';
+  setTimeout(()=> btn.textContent = original, 2500);
+});
+
+/* ===================== ظهور العناصر عند التمرير ===================== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+}, {threshold:.15});
+
+/* ===================== خلفية النجوم ===================== */
+const starsWrap = document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.top = Math.random()*100 + '%';
+  s.style.left = Math.random()*100 + '%';
+  s.style.animationDelay = (Math.random()*4) + 's';
+  s.style.animationDuration = (3 + Math.random()*3) + 's';
+  starsWrap.appendChild(s);
+}
+
+/* ===================== تشغيل أولي ===================== */
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
